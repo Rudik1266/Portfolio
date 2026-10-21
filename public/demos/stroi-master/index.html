@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>СтройМастер — Ремонт и отделка квартир под ключ в Москве и МО</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --dark: #0f172a;
+      --dark-card: #1e293b;
+      --light-bg: #f8fafc;
+      --text: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Manrope',sans-serif; }
+    body { background-color: #ffffff; color: var(--text); line-height: 1.6; }
+    
+    /* Header */
+    header { border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.35rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+    .logo span { color: var(--primary); }
+    .nav-contacts { display: flex; align-items: center; gap: 1.5rem; font-size: 0.95rem; }
+    .phone { font-weight: 700; color: var(--dark); text-decoration: none; }
+    .btn { background: var(--primary); color: white; border: none; padding: 0.65rem 1.4rem; border-radius: 9999px; font-weight: 600; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 5rem 1.5rem 6rem; position: relative; overflow: hidden; }
+    .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); color: #fb923c; padding: 0.35rem 0.9rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; color: #ffffff; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2rem; max-width: 540px; }
+    .hero-features { display: flex; gap: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+    .hf-item strong { display: block; font-size: 1.5rem; color: #ffffff; }
+    .hf-item span { font-size: 0.85rem; color: #94a3b8; }
+
+    /* Calculator Card */
+    .calc-card { background: white; border-radius: 1.5rem; padding: 2rem; color: var(--dark); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .calc-card h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .calc-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .range-val { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+    input[type=range] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+    select, input[type=text] { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 0.75rem; font-size: 0.95rem; outline: none; }
+    select:focus, input[type=text]:focus { border-color: var(--primary); }
+    .calc-total { background: #fff7ed; border: 1px dashed #fdba74; border-radius: 0.75rem; padding: 1rem; margin: 1.5rem 0; text-align: center; }
+    .calc-total .amount { font-size: 1.75rem; font-weight: 800; color: var(--primary); }
+
+    /* Section */
+    .section { max-width: 1200px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .section-title { text-align: center; margin-bottom: 3.5rem; }
+    .section-title h2 { font-size: 2.25rem; font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; }
+    .section-title p { color: var(--text-muted); font-size: 1.05rem; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .card { border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; background: white; transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+    .card img { width: 100%; height: 220px; object-fit: cover; }
+    .card-body { padding: 1.5rem; }
+    .card-body h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+    .card-body p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .card-price { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+
+    /* Footer */
+    footer { background: var(--dark); color: white; padding: 4rem 1.5rem 2rem; border-top: 1px solid #334155; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap: 2rem; }
+    
+    @media (max-width: 900px) {
+      .hero-container { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Строй<span>Мастер</span>
+      </a>
+      <div class="nav-contacts">
+        <a href="tel:+74950000000" class="phone">+7 (495) 890-34-12</a>
+        <a href="#calc" class="btn">Рассчитать смету</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <div class="badge">
+          <span>●</span> Бригада профессионалов №1 по отделке
+        </div>
+        <h1>Капитальный ремонт и отделка <span>без предоплаты</span> и задержек</h1>
+        <p>
+          Фиксируем стоимость и сроки в официальном договоре. Гарантия на все виды работ 3 года.
+          Оплата поэтапно только по факту выполненных работ.
+        </p>
+
+        <div class="hero-features">
+          <div class="hf-item">
+            <strong>12 лет</strong>
+            <span>Опыта на рынке</span>
+          </div>
+          <div class="hf-item">
+            <strong>240+</strong>
+            <span>Сданных объектов</span>
+          </div>
+          <div class="hf-item">
+            <strong>3 года</strong>
+            <span>Официальной гарантии</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-card" id="calc">
+        <h3>Экспресс-калькулятор сметы</h3>
+        <p>Узнайте ориентировочную стоимость ремонта за 30 секунд</p>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label style="margin: 0;">Площадь квартиры:</label>
+            <span class="range-val" id="areaDisplay">65 м²</span>
+          </div>
+          <input type="range" id="areaInput" min="25" max="250" value="65" />
+        </div>
+
+        <div class="form-group">
+          <label>Тип ремонта:</label>
+          <select id="typeSelect">
+            <option value="8500">Косметический ремонт (от 8 500 ₽/м²)</option>
+            <option value="13500" selected>Капитальный ремонт (от 13 500 ₽/м²)</option>
+            <option value="19000">Дизайнерский ремонт премиум (от 19 000 ₽/м²)</option>
+          </select>
+        </div>
+
+        <div class="calc-total">
+          <div style="font-size: 0.85rem; color: #9a3412;">Примерная стоимость:</div>
+          <div class="amount" id="totalDisplay">877 500 ₽</div>
+          <div style="font-size: 0.75rem; color: #9a3412; margin-top: 4px;">Срок работ: ~45–60 дней</div>
+        </div>
+
+        <button class="btn" style="width: 100%; justify-content: center;" onclick="alert('Заявка принята! Инженер свяжется с вами для бесплатного замера.')">
+          Зафиксировать скидку 10% на смету
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <h2>Наши сданные объекты</h2>
+      <p>Фотографии реальных квартир после чистовой уборки</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="ЖК Символ" />
+        <div class="card-body">
+          <h4>ЖК «Символ» — 78 м²</h4>
+          <p>Дизайнерский ремонт евро-трешки с перепланировкой и звукоизоляцией.</p>
+          <div class="card-price">1 420 000 ₽ • 65 дней</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="ЖК Сердце Столицы" />
+        <div class="card-body">
+          <h4>ЖК «Сердце Столицы» — 92 м²</h4>
+          <p>Капитальный ремонт в стиле минимализм со скрытыми дверями и трековым светом.</p>
+          <div class="card-price">1 890 000 ₽ • 80 дней</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=600&q=80" alt="ЖК Зиларт" />
+        <div class="card-body">
+          <h4>ЖК «Зиларт» — 54 м²</h4>
+          <p>Комплексная чистовая отделка квартиры с керамогранитом и теплыми полами.</p>
+          <div class="card-price">980 000 ₽ • 45 дней</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">СтройМастер</h4>
+        <p style="color: #94a3b8; font-size: 0.85rem;">© 2026 ООО «СтройМастер». Все права защищены. Выезд замерщика бесплатно.</p>
+      </div>
+      <div>
+        <a href="tel:+74950000000" style="color: white; font-weight: 700; text-decoration: none; font-size: 1.1rem;">+7 (495) 890-34-12</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const areaInput = document.getElementById('areaInput');
+    const areaDisplay = document.getElementById('areaDisplay');
+    const typeSelect = document.getElementById('typeSelect');
+    const totalDisplay = document.getElementById('totalDisplay');
+
+    function update() {
+      const area = parseInt(areaInput.value, 10);
+      const pricePerMeter = parseInt(typeSelect.value, 10);
+      areaDisplay.textContent = area + ' м²';
+      const total = area * pricePerMeter;
+      totalDisplay.textContent = total.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    areaInput.addEventListener('input', update);
+    typeSelect.addEventListener('change', update);
+    update();
+  </script>
+</body>
+</html>
